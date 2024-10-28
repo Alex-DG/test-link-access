@@ -1,46 +1,51 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
 
 const params = new URLSearchParams(document.location.search.substring(1))
 const urlParam = params.get('flow') ? params.get('flow') : 1
+const sourceParam = params.get('source') ? params.get('source') : 'none'
 
-const LINK_TEST = `https://designium.staging.8thwall.app/murakami/?flow=${urlParam}`
+const LINK_TEST = `https://designium.staging.8thwall.app/murakami/?flow=${urlParam}&source=${sourceParam}`
 
 console.log('LINK_TEST =', LINK_TEST)
 
 document.querySelector('#app').innerHTML = `
   <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-
-    <h1>Hello Vite!</h1>
-    
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
 
     <div class="test-link">
       <a href="${LINK_TEST}" target="_blank">
-      LINK TO TEST 1: target="_blank"
+      LINK 1 TEST: target="_blank"
       </a>
     </div>
     
     <div class="test-link">
       <a href="${LINK_TEST}">
-        LINK TO TEST 2: no target
+        LINK 2 TEST : no target
       </a>
+    </div>
+
+
+    <div class="test-link">
+      <button id="openExperience">Open Experience</button>
     </div>
    
     <p class="read-the-docs">
-      Click on the Vite logo to learn more
+      Click on one of the links or the button to open the experience.
+    </p>
+
+    <p class="read-the-docs">
+      The button click logic hides the link URL from page inspection.
     </p>
   </div>
 `
 
-setupCounter(document.querySelector('#counter'))
+// HTML:
+// <div class="test-link">
+// <button id="openExperience">Open Experience</button>
+// </div>
+
+// JAVASCRIPT: -> Register the event listener after the HTML has been injected
+document.getElementById('openExperience').addEventListener('click', () => {
+  console.log('click!!!')
+  const url = LINK_TEST
+  window.open(url, '_blank') // Open in a new tab
+})
