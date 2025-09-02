@@ -18,12 +18,12 @@ let winB = null
 document.querySelector('#app').innerHTML = `
   <div>
     <div class="test-link">
-      <a id="openExperienceLink" href="${LINK_TEST}" target="_blank">LINK 1 TEST: target="_blank"</a>
+      <a id="openExperienceLink" href="${LINK_TEST}" target="_blank">Open Experience HTML link</a>
     </div>
     <div class="test-link">
-      <button id="openExperience">Open Experience</button>
+      <button id="openExperience">Open Experience HTML button</button>
     </div>
-    <p class="read-the-docs">Click the link or the button to open the experience.</p>
+    <p class="read-the-docs">Click the link or the button to open the WebAR experience.</p>
   </div>
 `
 
