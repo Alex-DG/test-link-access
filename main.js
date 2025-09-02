@@ -29,7 +29,6 @@ document.querySelector('#app').innerHTML = `
 
 function openWebArExperience() {
   const url = withReturn(LINK_TEST, location.href)
-  // keep opener so B can window.close()
   winB = window.open(url, '_blank', 'noopener=no')
 }
 
